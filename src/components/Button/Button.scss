@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+
+.Button {
+  background: $color-white-000;
+  border-radius: 5px;
+  border: 1px solid $color-gray-000;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &.default {
+    font-size: 1em;
+    padding: 10px 16px;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.small {
+    font-size: 0.8em;
+    padding: 5px 8px;
+  }
+}

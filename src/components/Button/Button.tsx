@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 import './Button.scss'
 
-const Button = ({ label, size = 'default', fullWidth }: IButton) => (
+const Button = ({ fullWidth, label, size = 'default' }: IButton) => (
   <button className={classNames('Button', size, { 'full-width': fullWidth })}>{label}</button>
 )
 

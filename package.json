@@ -1,6 +1,6 @@
 {
   "name": "@ricardomeza/infosel-ui-component-library",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Infosel UI Component Library",
   "main": "dist/cjs/index.js",
   "publishConfig": {
@@ -10,7 +10,10 @@
     "rollup": "rollup -c",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint-check": "eslint --ext .js,.ts,.tsx 'src'",
+    "lint-fix": "eslint --fix --ext .js,.ts,.tsx 'src'",
+    "lint": "npm run lint-fix && npm run lint-check"
   },
   "author": "Ricardo Meza",
   "license": "ISC",
@@ -32,9 +35,15 @@
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.3",
     "@types/react": "^17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "babel-jest": "^27.4.5",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-sort-destructure-keys": "^1.4.0",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.5",
     "rollup": "^2.62.0",

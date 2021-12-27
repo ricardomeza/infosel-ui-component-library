@@ -1,8 +1,11 @@
 {
-  "name": "infosel-ui-component-library",
+  "name": "@ricardomeza/infosel-ui-component-library",
   "version": "0.0.1",
   "description": "Infosel UI Component Library",
   "main": "dist/cjs/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/ricardomeza"
+  },
   "scripts": {
     "rollup": "rollup -c",
     "test": "test"

@@ -15,5 +15,6 @@
     "strict": true,
     "target": "es6"
   },
-  "include": ["./jest-setup.ts"]
+  "include": ["./jest-setup.ts"],
+  "exclude": ["dist"]
 }

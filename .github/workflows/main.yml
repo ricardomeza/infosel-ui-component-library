@@ -19,6 +19,7 @@ jobs:
           scope: '@ricardomeza'
       - run: npm install
       - run: npm run rollup
+      - run: npm run test
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

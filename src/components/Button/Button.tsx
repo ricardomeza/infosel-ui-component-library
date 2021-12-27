@@ -9,7 +9,7 @@ const Button = ({ label, size = 'default', fullWidth }: IButton) => (
 export interface IButton {
   fullWidth?: boolean
   label: string
-  size: TButton
+  size?: TButton
 }
 
 export type TButton = 'default' | 'small'

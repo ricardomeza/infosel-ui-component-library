@@ -12,6 +12,6 @@ describe('Button', () => {
 
   test('Button has class "small"', () => {
     const { container } = render(<Button label="Submit" size="small" />)
-    expect(container.firstChild).toHaveClass('small')
+    expect(container.getElementsByClassName('small').length).toBe(1)
   })
 })

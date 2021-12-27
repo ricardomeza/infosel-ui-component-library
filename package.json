@@ -29,7 +29,6 @@
     "@storybook/manager-webpack5": "^6.4.9",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.4.9",
-    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.3",
     "@types/react": "^17.0.38",

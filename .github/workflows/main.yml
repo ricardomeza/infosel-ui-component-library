@@ -1,0 +1,22 @@
+name: Infosel UI Component Library
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.0
+          registry-url: https://npm.pkg.github.com/
+          scope: '@ricardomeza'
+      - run: npm install
+      - run: npm run rollup
+      - run: npm publish

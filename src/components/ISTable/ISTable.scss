@@ -52,8 +52,14 @@
         }
       }
     }
+
     td {
       padding: 16px;
+      text-align: right;
+
+      &:first-child {
+        text-align: left;
+      }
 
       &.collapse-wrapper {
         padding: 0;
@@ -74,8 +80,8 @@
       }
 
       img {
-        width: 30px;
         margin-right: 10px;
+        width: 30px;
       }
     }
   }

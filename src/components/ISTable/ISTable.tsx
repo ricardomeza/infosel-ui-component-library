@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import ISChart from '../Chart/ISChart'
 import React, { useState } from 'react'
 import { numberFormat, numberToPercentage } from '../../utils/formating'
@@ -47,9 +46,7 @@ const NewRow = ({
       </tr>
       <tr>
         <td className="collapse-wrapper" colSpan={3}>
-          <div className={classNames('collapse', { open })}>
-            <ISChart assetId={id} {...{ endpoint }} />
-          </div>
+          {open && <ISChart assetId={id} {...{ endpoint }} />}
         </td>
       </tr>
     </React.Fragment>

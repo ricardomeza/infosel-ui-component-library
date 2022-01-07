@@ -1,6 +1,6 @@
 {
   "name": "@ricardomeza/infosel-ui-component-library",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Infosel UI Component Library",
   "main": "dist/cjs/index.js",
   "publishConfig": {

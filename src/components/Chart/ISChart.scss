@@ -1,0 +1,24 @@
+.chart-wrapper {
+  width: 100%;
+
+  div.chart-wrapper__error,
+  div.chart-wrapper__loading {
+    align-items: center;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    width: 100%;
+
+    p {
+      background-color: lightgray;
+      border-radius: 20px;
+      padding: 16px 50px;
+    }
+  }
+
+  .chart-content {
+    &.hide {
+      display: none;
+    }
+  }
+}

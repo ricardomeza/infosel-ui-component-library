@@ -1,6 +1,8 @@
+import classNames from 'classnames'
 import React, { useEffect, useRef, useState } from 'react'
 import { createChart, IChartApi, ISeriesApi } from 'lightweight-charts'
 import { IEndpointArgs } from '../ISTable/ISTable'
+import './ISChart.scss'
 
 const ISChart = ({ assetId, endpoint }: ISChart) => {
   const [dataLoaded, setDataLoaded] = useState(false)
@@ -44,12 +46,21 @@ const ISChart = ({ assetId, endpoint }: ISChart) => {
   }, [])
 
   return (
-    <>
+    <div className="chart-wrapper">
       {isLoading && !error && (
-        <p style={{ height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading…</p>
+        <div className="chart-wrapper__loading">
+          <p>Loading…</p>
+        </div>
       )}
-      <div ref={chartgWrapperRef} className="chart-wrapper"></div>
-    </>
+
+      {error && (
+        <div className="chart-wrapper__error">
+          <p>Try again</p>
+        </div>
+      )}
+
+      <div ref={chartgWrapperRef} className={classNames('chart-content', { hide: error || isLoading })}></div>
+    </div>
   )
 }
 

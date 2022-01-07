@@ -1,9 +1,10 @@
 import classNames from 'classnames'
-import React, { ReactNode, useState } from 'react'
+import ISChart from '../Chart/ISChart'
+import React, { useState } from 'react'
 import { numberFormat, numberToPercentage } from '../../utils/formating'
 import './ISTable.scss'
 
-const ISTable = ({ children, data, headers, logos }: IISTable) => (
+const ISTable = ({ data, endpoint, headers, logos }: IISTable) => (
   <table className="istable">
     <thead>
       <tr>
@@ -15,7 +16,7 @@ const ISTable = ({ children, data, headers, logos }: IISTable) => (
     <tbody>
       {data.map((data: IISTableData) => (
         <React.Fragment key={data.id}>
-          <NewRow {...{ data, logos }}>{children}</NewRow>
+          <NewRow {...{ data, logos, endpoint }} />
         </React.Fragment>
       ))}
     </tbody>
@@ -23,8 +24,8 @@ const ISTable = ({ children, data, headers, logos }: IISTable) => (
 )
 
 const NewRow = ({
-  children,
-  data: { changePercent24Hr, name, priceClassName, priceUsd, symbol },
+  data: { changePercent24Hr, id, name, priceClassName, priceUsd, symbol },
+  endpoint,
   logos
 }: IISTableRow) => {
   const [open, setOpen] = useState(false)
@@ -46,18 +47,25 @@ const NewRow = ({
       </tr>
       <tr>
         <td className="collapse-wrapper" colSpan={3}>
-          <div className={classNames('collapse', { open })}>{children}</div>
+          <div className={classNames('collapse', { open })}>
+            <ISChart assetId={id} {...{ endpoint }} />
+          </div>
         </td>
       </tr>
     </React.Fragment>
   )
 }
 
+export interface IEndpointArgs {
+  assetId: string
+  interval: string
+}
+
 export interface IISTable {
   headers: string[]
   data: IISTableData[]
   logos: Record<string, string>
-  children?: ReactNode | null
+  endpoint: ({ assetId, interval }: IEndpointArgs) => Promise<unknown>
 }
 
 export interface IISTableData {
@@ -79,7 +87,7 @@ export interface IISTableData {
 export interface IISTableRow {
   data: IISTableData
   logos: Record<string, string>
-  children?: ReactNode | null
+  endpoint: ({ assetId, interval }: IEndpointArgs) => Promise<unknown>
 }
 
 export default ISTable

@@ -1,4 +1,4 @@
-import { IISTableData } from './interface'
+import { IISTableData } from './ISTable'
 
 export const HEADERS_MOCK = ['Name', 'Price', '(24H)']
 

@@ -55,6 +55,10 @@
     td {
       padding: 16px;
 
+      &.collapse-wrapper {
+        padding: 0;
+      }
+
       .collapse {
         display: none;
 

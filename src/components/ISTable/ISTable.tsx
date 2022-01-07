@@ -1,9 +1,10 @@
 import classNames from 'classnames'
-import React, { ReactNode, useState } from 'react'
-import { IISTable, IISTableData } from './interface'
+import React, { useState } from 'react'
+import { IISTable, IISTableData, IISTableRow } from './interface'
+import { numberFormat, numberToPercentage } from '../../utils/formating'
 import './ISTable.scss'
 
-const ISTable = ({ headers, data, logos, children }: IISTable) => (
+const ISTable = ({ children, data, headers, logos }: IISTable) => (
   <table className="istable">
     <thead>
       <tr>
@@ -13,44 +14,39 @@ const ISTable = ({ headers, data, logos, children }: IISTable) => (
       </tr>
     </thead>
     <tbody>
-      {data.map((item: IISTableData) => (
-        <React.Fragment key={item.id}>
-          <NewRow row={item} logos={logos}>
-            {children}
-          </NewRow>
+      {data.map((data: IISTableData) => (
+        <React.Fragment key={data.id}>
+          <NewRow {...{ data, logos }}>{children}</NewRow>
         </React.Fragment>
       ))}
     </tbody>
   </table>
 )
 
-const NewRow = ({ row, logos, children }: any) => {
+const NewRow = ({
+  children,
+  data: { changePercent24Hr, name, priceClassName, priceUsd, symbol },
+  logos
+}: IISTableRow) => {
   const [open, setOpen] = useState(false)
-
   const getLogo = (id: string) => logos[id.toLowerCase()]
-
-  const numberFormat = (value: number) =>
-    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value)
-
-  const numberToPercentage = (value: number) =>
-    Number(value / 100).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 })
 
   return (
     <React.Fragment>
-      <tr className={row.priceClassName} onClick={() => setOpen(!open)}>
+      <tr className={priceClassName} onClick={() => setOpen(!open)}>
         <td>
-          <img src={getLogo(row.symbol)} alt="" />
+          <img src={getLogo(symbol)} alt="" />
           <div>
-            {row.name}
+            {name}
             <br />
-            {row.symbol}
+            {symbol}
           </div>
         </td>
-        <td>{numberFormat(row.priceUsd)}</td>
-        <td>{numberToPercentage(row.changePercent24Hr)}</td>
+        <td>{numberFormat(priceUsd)}</td>
+        <td>{numberToPercentage(changePercent24Hr)}</td>
       </tr>
       <tr>
-        <td style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={3}>
+        <td className="collapse-wrapper" colSpan={3}>
           <div className={classNames('collapse', { open })}>{children}</div>
         </td>
       </tr>

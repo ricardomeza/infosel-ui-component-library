@@ -18,4 +18,11 @@ export interface IISTableData {
   symbol: string
   volumeUsd24Hr: string
   vwap24Hr: string | null
+  priceClassName?: string
+}
+
+export interface IISTableRow {
+  data: IISTableData
+  logos: Record<string, string>
+  children?: ReactNode | null
 }

@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .istable {
   background-color: white;
   border-collapse: separate;
@@ -8,13 +10,14 @@
   width: 100%;
 
   thead {
-    background-color: white;
+    background-color: $color-gray-001;
+    box-shadow: 0 4px 3px 0px rgb(0 0 0 / 4%);
     position: sticky;
-    top: 80px;
+    top: 0;
     z-index: 10;
 
     th {
-      border-bottom: 1px solid rgba(224, 224, 224, 1);
+      border-bottom: 1px solid $color-gray-002;
       padding: 16px;
       text-align: right;
 
@@ -43,19 +46,19 @@
 
       @keyframes AnimationGreen {
         0% {
-          background-color: rgba(#4b7f4c, 1);
+          background-color: rgba($color-green-000, 1);
         }
         100% {
-          background-color: rgba(#4b7f4c, 0);
+          background-color: rgba($color-green-000, 0);
         }
       }
 
       @keyframes AnimationRed {
         0% {
-          background-color: rgba(#e75b71, 1);
+          background-color: rgba($color-red-000, 1);
         }
         100% {
-          background-color: rgba(#e75b71, 0);
+          background-color: rgba($color-red-000, 0);
         }
       }
     }
